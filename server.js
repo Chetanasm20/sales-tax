@@ -1,6 +1,6 @@
 const express = require('express')
-const receiptHandler = require('./handler/receipt-handler')
-const receiptRoute = require('./routes/receipt-route')
+const receiptRoute = require('./src/routes/receipt-route')
+
 // const { default: receiptRoute } = require('./routes/receipt-route')
 // const {  receiptHandler } = require('./handler/receipt-handler')
 const app = express()
