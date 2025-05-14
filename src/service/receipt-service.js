@@ -1,11 +1,12 @@
-const { exemptGoods } = require("../master-data/goods-mster-data");
+const { receiptConstants } = require("../constants/receipt-constants");
+const { exemptGoods, taxValues } = require("../master-data/goods-mster-data");
 
 class ReceiptService {
     async createReceipt(inputs) {
 
         try {
-            const baseTax = 0.10;
-            const importDuty = 0.05;
+            const baseTax = taxValues.baseTax;
+            const importDuty = taxValues.importDuty;
             let totalTax = 0;
             let totalAmount = 0;
             let receipt = [];
@@ -34,8 +35,8 @@ class ReceiptService {
             });
 
             
-            receipt.push(`Sales Taxes: ${totalTax.toFixed(2)}`);
-            receipt.push(`Total: ${totalAmount.toFixed(2)}`);
+            receipt.push(`${receiptConstants.salesTax}: ${totalTax.toFixed(2)}`);
+            receipt.push(`${receiptConstants.total}: ${totalAmount.toFixed(2)}`);
             return receipt
 
             
@@ -69,7 +70,7 @@ class ReceiptService {
       }
       
        isImported(itemName) {
-        return itemName.includes('imported');
+        return itemName.includes(receiptConstants.imported);
       }
 
 }

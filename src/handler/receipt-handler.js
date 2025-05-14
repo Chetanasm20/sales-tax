@@ -1,4 +1,4 @@
-const { statusCodes } = require("../constants/http-statu-codes");
+const { statusCodes } = require("../constants/http-status-codes");
 const { receiptService } = require("../service/receipt-service");
 const { receiptValidtaor } = require("./validator/receipt-validator");
 
