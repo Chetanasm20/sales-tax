@@ -9,18 +9,16 @@ class ReceiptHandler {
         try {
             const payload = request.body;
             const InValidDataMessages = await receiptValidtaor.validateReceiptPayload(payload);
-            
+
             if (InValidDataMessages.length == 0) {
-             const receiptResponse=await   receiptService.createReceipt(payload);
-                
-                response.status(200).json({
-                    messages: receiptResponse,
-                    status: statusCodes.OK
+                const receiptResponse = await receiptService.createReceipt(payload);
+
+                response.status(statusCodes.OK).json({
+                    messages: receiptResponse
                 })
-            }else {
-                response.status(400).json({
-                    messages: InValidDataMessages,
-                    status: statusCodes.BAD_REQUEST
+            } else {
+                response.status(statusCodes.BAD_REQUEST).json({
+                    messages: InValidDataMessages
                 })
             }
 

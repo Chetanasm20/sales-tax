@@ -2,6 +2,7 @@ const { exemptGoods } = require("../master-data/goods-mster-data");
 
 class ReceiptService {
     async createReceipt(inputs) {
+
         try {
             const baseTax = 0.10;
             const importDuty = 0.05;
@@ -9,9 +10,8 @@ class ReceiptService {
             let totalAmount = 0;
             let receipt = [];
            
-           
             inputs.forEach(input => {
-                const items = this.parseLine(input);
+                const items = this.convertToGoodsBrakeUps(input);
                 const receiptAtItems=[]
                 items.forEach(item => {
                     let tax = 0;
@@ -44,7 +44,7 @@ class ReceiptService {
         }
     }
 
-    parseLine(line) {
+    convertToGoodsBrakeUps(line) {
         const regex = /(\d+)\s(.*?)\s+at\s+(\d+\.\d{2})/g;
         let items = [];
         let match;
