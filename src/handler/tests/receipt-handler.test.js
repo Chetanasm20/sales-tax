@@ -29,7 +29,7 @@ describe('Test cases for receipt handler', () => {
 
         receiptService.createReceipt = jest.fn().mockResolvedValue(null);
         await receiptHandler.createReceiptOnGoods(mockRequest, response);
-        console.log(response.body);
+       
         expect(response.responseStatus).toBe(400);
         expect(response.body.messages[0]).toBe('Payload is Empty, Please provide input')
     });
