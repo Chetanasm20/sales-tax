@@ -30,7 +30,7 @@ class ReceiptService {
                     receiptAtItems.push(`${item.quantity} ${item.name}: ${totalItemPrice.toFixed(2)}`);
 
                 })
-                receipt.push(receiptAtItems.join(","));
+                receipt.push(receiptAtItems.join(", "));
                 
             });
 

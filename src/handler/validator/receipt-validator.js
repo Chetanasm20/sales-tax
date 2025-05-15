@@ -1,4 +1,4 @@
-const { errorMessages } = require("../../Error-messages/messages");
+const { errorMessages } = require("../../error-messages/messages");
 
 
 class ReceiptValidator{
